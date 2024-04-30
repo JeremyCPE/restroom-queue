@@ -7,6 +7,7 @@ function Character(props)
     }
     return(
     <div>
+        <h2> id {props.id} </h2>
         <img className="img" src = {character_default} alt="character"></img>
     </div>
     );
