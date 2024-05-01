@@ -6,34 +6,42 @@ import Validate from './Validate';
 
 function Gameboard() {
 
-  const listCharact = [0,1,2,3,4]
-  const list = [{id: 0, charact:[]},
+  const listCharacts = [{id: 0, type : "normal"},{id: 1, type : "normal"},
+                        {id: 2, type : "normal"},{id: 3, type : "normal"},
+                        {id: 4, type : "normal"},{id: 5, type : "normal"}];
+
+  const listUrinals = [{id: 0, charact:[]},
   { id: 1, charact:[]},
   { id: 2, charact:[]},
   { id: 3, charact:[]},
   { id: 4, charact:[]}];
 
-  const[dictionnary, setListCharact]=useState(list);
-  const[characts, setList]=useState(listCharact);
+  const[urinals, setListCharact]=useState(listUrinals);
+  const[characts, setList]=useState(listCharacts);
 
 
   // To improve
   const onChangeUpdate = c => {
-    let temp = listCharact[c];
-    let temp2 = list;
-    list.map(item => {
+    let temp2 = listUrinals;
+    listUrinals.map(item => {
       if (item.id == c) {
-        item.charact.push(temp);
-        listCharact.pop();
+        console.log(item);
+        item.charact.push(listCharacts[0]);
+        listCharacts.shift();
+        console.log(listCharacts);
       }
     });
-    setListCharact(temp2);
-    setList(listCharact);
+    setListCharact(t => temp2);
+    setList(l => listCharacts);
+  }
+
+const onResetClick = c => {
+ // TODO : Implement
 }
   return(
     <>
     <GameControl></GameControl>
-    <Urinals list={dictionnary} handleOnChange = {onChangeUpdate}></Urinals>
+    <Urinals list={urinals} handleOnChange = {onChangeUpdate} handleOnReset = {onResetClick}></Urinals>
     <Queue listCharact={characts} />
     <Validate></Validate>
     </>

@@ -8,14 +8,12 @@ function Urinal(props)
     return(
     <>
     <div>
-        <img className="img" src = "" alt="urinal"></img>
+        <img className="img" src = {urinal_img} alt="urinal"></img>
         <h2>N°{props.list.id}</h2>
-        <button onClick={() => {props.handleOnClick(props.list.id)}}>{answer}</button>
-    </div>
-    <div>
         {props.list.charact.map((_,index) => (
             <Character key={index} id={index} />
         ))}
+        <button onClick={() => {props.handleOnClick(props.list.id)}}>Add !</button>
     </div>
     </>
     );

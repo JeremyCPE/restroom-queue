@@ -4,11 +4,13 @@ import React, {useState} from 'react';
 
 function Urinals(props)
 {
-    const[selected, setSelected]=useState();
+    const[selected, setSelected]=useState(0);
 
     const onClickUpdate = (value) =>{
-        setSelected(value);
+        console.log("clicked on " + value);
+        setSelected(c => c+1); //Update the DOM, to improve
         props.handleOnChange(value);
+        return;
     }
     return(
         <>
@@ -20,6 +22,7 @@ function Urinals(props)
             <li className="child"><Urinal list={props.list[3]} handleOnClick = {onClickUpdate} selected={selected}/></li>
             <li className="child"><Urinal list={props.list[4]} handleOnClick = {onClickUpdate} selected={selected}/></li>
         </ul>
+        <button onClick={() => {props.handleOnReset()}}>Reset ! </button>
         </>
     );
 }
