@@ -16,19 +16,17 @@ function Gameboard() {
   const[dictionnary, setListCharact]=useState(list);
   const[characts, setList]=useState(listCharact);
 
-  const onChangeUpdate = (value) => {
-    console.log("> value :" + value);
-    console.log("> listCharact :" + listCharact);
-    let temp = listCharact[value];
+
+  // To improve
+  const onChangeUpdate = c => {
+    let temp = listCharact[c];
     let temp2 = list;
-    temp2.map(item => {
-      if (item.id == value) {
+    list.map(item => {
+      if (item.id == c) {
         item.charact.push(temp);
         listCharact.pop();
-        console.log("> item" + item);
       }
     });
-    console.log("> list :" + temp2);
     setListCharact(temp2);
     setList(listCharact);
 }
