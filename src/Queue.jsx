@@ -1,13 +1,13 @@
 import Character from "./Character";
 import './Queue.css';
 function Queue(props) {
-    const characters = new Array(props.nb).fill(null);
 
+    console.log("> props : " + props.listCharact);
     return (
         <>
-        <h1>Nb character {props.nb}</h1>
-            {characters.map((_, index) => (
-                <Character key={index} id={index} />
+        <h1>Nb character {props.listCharact.length}</h1>
+            {props.listCharact.map((_, index) => (
+                <Character key={index}/>
             ))}
         </>
     );

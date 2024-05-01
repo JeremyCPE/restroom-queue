@@ -3,13 +3,14 @@ import Character from './Character'
 
 function Urinal(props)
 {
-    const answer = props.selected == props.list.id ? "Clicked !" : "Click";
+    const answer = false;
+    // props.selected == props.list.id ? "Clicked !" : "Click";
     return(
     <>
     <div>
-        <img className="img" src = "" alt="urinql"></img>
+        <img className="img" src = "" alt="urinal"></img>
         <h2>N°{props.list.id}</h2>
-        <button disabled={answer=="Clicked !"} onClick={() => {props.handleOnClick(props.id)}}>{answer}</button>
+        <button onClick={() => {props.handleOnClick(props.list.id)}}>{answer}</button>
     </div>
     <div>
         {props.list.charact.map((_,index) => (
